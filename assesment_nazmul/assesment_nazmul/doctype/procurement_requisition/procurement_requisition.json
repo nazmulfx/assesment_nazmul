@@ -11,18 +11,21 @@
   "naming_series",
   "requisition_no",
   "company",
-  "justification",
   "column_break_edwo",
   "required_date",
   "request_date",
+  "status",
   "priority",
   "column_break_gaml",
-  "status",
   "requested_by",
+  "employee_name",
+  "designation",
   "department",
   "amended_from",
   "section_break_kfsq",
-  "items"
+  "items",
+  "section_break_kmth",
+  "justification"
  ],
  "fields": [
   {
@@ -48,11 +51,10 @@
   {
    "fetch_from": "requested_by.department",
    "fieldname": "department",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Department",
-   "options": "Department",
    "read_only": 1
   },
   {
@@ -132,13 +134,33 @@
    "in_standard_filter": 1,
    "label": "Priority",
    "options": "Low\nMedium\nHigh\nUrgent"
+  },
+  {
+   "fetch_from": "requested_by.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_kmth",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "requested_by.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-29 20:58:25.665557",
+ "modified": "2026-07-30 04:46:12.773432",
  "modified_by": "Administrator",
  "module": "Assesment Nazmul",
  "name": "Procurement Requisition",
