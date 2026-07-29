@@ -3,30 +3,33 @@
 
 frappe.ui.form.on('Procurement Requisition', {
 	refresh(frm) {
-		// your code here
+		calculate_total_amount(frm);
+
+		if (frm.doc.docstatus === 1) {
+			frm.add_custom_button(__('Request for Quotation'), function() {
+				frappe.model.open_mapped_doc({
+					method: "assesment_nazmul.assesment_nazmul.doctype.procurement_requisition.procurement_requisition.make_request_for_quotation",
+					frm: frm,
+				});
+			}, __('Create'));
+		}
 	}
-})
+});
 
 frappe.ui.form.on('Procurement Requisition Item', {
-	refresh(frm) {
-		// your code here
-	},
-    item_code(frm, cdt, cdn) {
-        calculate_amount(frm, cdt, cdn)
-    },
-    qty(frm, cdt, cdn) {
-		calculate_amount(frm, cdt, cdn);
-	},
-    rate(frm, cdt, cdn) {
-		calculate_amount(frm, cdt, cdn);
-	},
 	item_code(frm, cdt, cdn) {
+		calculate_amount(frm, cdt, cdn);
+	},
+	qty(frm, cdt, cdn) {
+		calculate_amount(frm, cdt, cdn);
+	},
+	rate(frm, cdt, cdn) {
 		calculate_amount(frm, cdt, cdn);
 	},
 	items_remove(frm) {
 		calculate_total_amount(frm);
 	}
-})
+});
 
 
 function calculate_amount(frm, cdt, cdn) {
