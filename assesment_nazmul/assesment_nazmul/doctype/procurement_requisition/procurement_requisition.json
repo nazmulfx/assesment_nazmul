@@ -24,6 +24,11 @@
   "amended_from",
   "section_break_kfsq",
   "items",
+  "section_break_moon",
+  "column_break_bwoe",
+  "column_break_dctx",
+  "column_break_ztkr",
+  "estimated_total_amount",
   "section_break_kmth",
   "justification"
  ],
@@ -154,13 +159,35 @@
    "fieldtype": "Data",
    "label": "Designation",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_moon",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_bwoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dctx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ztkr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "estimated_total_amount",
+   "fieldtype": "Currency",
+   "label": "Estimated Total Amount",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-30 04:46:12.773432",
+ "modified": "2026-07-30 04:49:18.077341",
  "modified_by": "Administrator",
  "module": "Assesment Nazmul",
  "name": "Procurement Requisition",
