@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
-from frappe.utils import flt
+from frappe.utils import flt, getdate, today
 from erpnext.stock.get_item_details import get_conversion_factor
 
 class ProcurementRequisition(Document):
@@ -18,8 +18,15 @@ class ProcurementRequisition(Document):
 		if employee:
 			self.requested_by = employee
 
+		## calculate total qty
+		total_qty = 0
+		for item in self.items:
+			total_qty += item.qty
+		self.total_quantity = total_qty
+
 	def validate(self):
 		self.set_uom_and_conversion_factor()
+		self.validate_fields()
 
 	def set_uom_and_conversion_factor(self):
 		for item in self.get("items") or []:
@@ -28,6 +35,17 @@ class ProcurementRequisition(Document):
 			conversion_factor_dict = get_conversion_factor(item.item_code, item.uom)
 			item.conversion_factor = flt(conversion_factor_dict.get("conversion_factor"))
 			item.stock_qty = flt(item.qty) * flt(item.conversion_factor)
+
+	def validate_fields(self):
+		if flt(self.estimated_total_amount) < 1:
+			frappe.throw("Estimated Budget must be greater than zero.")
+
+		current_date = today()
+		if self.required_date and getdate(self.required_date) < getdate(current_date):
+			frappe.throw("Required Date cannot be earlier than today's date.")
+
+		if self.total_quantity < 1:
+			frappe.throw("Quantity must be greater than zero.")
 			
 
 @frappe.whitelist()

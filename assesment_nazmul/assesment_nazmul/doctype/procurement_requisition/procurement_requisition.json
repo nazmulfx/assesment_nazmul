@@ -26,6 +26,7 @@
   "items",
   "section_break_moon",
   "column_break_bwoe",
+  "total_quantity",
   "column_break_dctx",
   "column_break_ztkr",
   "estimated_total_amount",
@@ -183,13 +184,19 @@
    "fieldtype": "Currency",
    "label": "Estimated Total Amount",
    "read_only": 1
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-30 07:20:43.861497",
+ "modified": "2026-07-30 07:44:34.273155",
  "modified_by": "Administrator",
  "module": "Assesment Nazmul",
  "name": "Procurement Requisition",
