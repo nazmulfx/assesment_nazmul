@@ -32,12 +32,19 @@ class ProcurementRequisition(Document):
 
 @frappe.whitelist()
 def make_request_for_quotation(source_name, target_doc=None):
+	def postprocess(source, target):
+		for item in target.items:
+			item.schedule_date = source.required_date
+
 	doclist = get_mapped_doc(
 		"Procurement Requisition",
 		source_name,
 		{
 			"Procurement Requisition": {
 				"doctype": "Request for Quotation",
+				"field_map": {
+					"required_date": "schedule_date",
+				},
 				"validation": {
 					"docstatus": ["=", 1],
 				},
@@ -57,6 +64,7 @@ def make_request_for_quotation(source_name, target_doc=None):
 			},
 		},
 		target_doc,
+		postprocess,
 	)
 
 	return doclist
