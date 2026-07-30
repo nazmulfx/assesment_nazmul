@@ -1,0 +1,16 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-07-30 07:05:03.557392",
+  "name": "Apply Requisition",
+  "workflow_action_name": "Apply Requisition"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-07-30 07:26:52.251456",
+  "name": "Order",
+  "workflow_action_name": "Order"
+ }
+]

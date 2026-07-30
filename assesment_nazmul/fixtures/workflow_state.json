@@ -1,0 +1,29 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-30 07:31:16.354699",
+  "name": "Waiting For RFQ",
+  "style": "Warning",
+  "workflow_state_name": "Waiting For RFQ"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-30 07:31:08.555111",
+  "name": "Draft",
+  "style": "Inverse",
+  "workflow_state_name": "Draft"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-30 07:31:24.379348",
+  "name": "Ordered",
+  "style": "Success",
+  "workflow_state_name": "Ordered"
+ }
+]

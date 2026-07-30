@@ -264,5 +264,26 @@ fixtures = [
             "Department Head",
             "Purchase Manager"
         ]]]
+	},
+    {
+		"doctype": "Workflow State",
+		"filters": [["name", "in", [
+            "Draft",
+            "Waiting For RFQ",
+            "Ordered"
+        ]]]
+	},
+    {
+		"doctype": "Workflow Action Master",
+		"filters": [["name", "in", [
+            "Apply Requisition",
+            "Order"
+        ]]]
+	},
+    {
+		"doctype": "Workflow",
+		"filters": [["name", "in", [
+            "Procurement Requisition"
+        ]]]
 	}
 ]

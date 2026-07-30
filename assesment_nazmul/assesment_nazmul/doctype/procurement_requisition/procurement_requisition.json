@@ -92,12 +92,14 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Draft\nPending Approval\nApproved\nRejected\nCancelled\nOrdered"
+   "options": "Draft\nPending for Approval\nApproved\nRejected\nOrdered",
+   "read_only": 1
   },
   {
    "fieldname": "requested_by",
@@ -187,7 +189,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-30 06:50:34.472617",
+ "modified": "2026-07-30 07:20:43.861497",
  "modified_by": "Administrator",
  "module": "Assesment Nazmul",
  "name": "Procurement Requisition",
