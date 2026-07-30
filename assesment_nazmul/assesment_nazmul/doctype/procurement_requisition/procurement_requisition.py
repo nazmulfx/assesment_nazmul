@@ -4,6 +4,8 @@
 import frappe
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
+from frappe.utils import flt
+from erpnext.stock.get_item_details import get_conversion_factor
 
 class ProcurementRequisition(Document):
 	def before_validate(self):
@@ -16,6 +18,17 @@ class ProcurementRequisition(Document):
 		if employee:
 			self.requested_by = employee
 
+	def validate(self):
+		self.set_uom_and_conversion_factor()
+
+	def set_uom_and_conversion_factor(self):
+		for item in self.get("items") or []:
+			if not item.item_code:
+				continue
+			conversion_factor_dict = get_conversion_factor(item.item_code, item.uom)
+			item.conversion_factor = flt(conversion_factor_dict.get("conversion_factor"))
+			item.stock_qty = flt(item.qty) * flt(item.conversion_factor)
+			
 
 @frappe.whitelist()
 def make_request_for_quotation(source_name, target_doc=None):
@@ -36,6 +49,9 @@ def make_request_for_quotation(source_name, target_doc=None):
 					"item_name": "item_name",
 					"qty": "qty",
 					"uom": "uom",
+					"stock_uom": "stock_uom",
+					"conversion_factor": "conversion_factor",
+					"stock_qty": "stock_qty",
 					"item_description": "description",
 				},
 			},

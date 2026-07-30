@@ -58,7 +58,6 @@
    "read_only": 1
   },
   {
-   "fetch_from": "item_code.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -96,7 +95,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-30 05:47:48.873421",
+ "modified": "2026-07-30 06:15:17.611451",
  "modified_by": "Administrator",
  "module": "Assesment Nazmul",
  "name": "Procurement Requisition Item",

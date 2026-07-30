@@ -19,6 +19,7 @@ frappe.ui.form.on('Procurement Requisition', {
 frappe.ui.form.on('Procurement Requisition Item', {
 	item_code(frm, cdt, cdn) {
 		calculate_amount(frm, cdt, cdn);
+		set_default_uom(frm, cdt, cdn);
 	},
 	qty(frm, cdt, cdn) {
 		calculate_amount(frm, cdt, cdn);
@@ -47,4 +48,17 @@ function calculate_total_amount(frm) {
 		total += flt(row.amount);
 	});
 	frm.set_value('estimated_total_amount', total);
+}
+
+function set_default_uom(frm, cdt, cdn) {
+	let row = locals[cdt][cdn];
+	if (row && row.item_code) {
+		frappe.db.get_value('Item', row.item_code, ['stock_uom'], (r) => {
+			if (r) {
+				let default_uom = r.stock_uom;
+                frappe.model.set_value(cdt, cdn, 'uom', default_uom);
+				frappe.model.set_value(cdt, cdn, 'stock_uom', r.stock_uom);
+			}
+		});
+	}
 }
